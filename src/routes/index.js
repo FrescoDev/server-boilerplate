@@ -1,10 +1,14 @@
-const handleRequest = require('./handle-request');
+const createGitRepo = require('./create-git-repo');
+const healthPing = require('./health-ping');
 const {
   LAMBDA_FUNCTION_ID,
 } = require('../env-vars');
 
 module.exports = (app) => {
-  app.get(`/v1/${LAMBDA_FUNCTION_ID}`,
-    handleRequest
+  app.post(`/${LAMBDA_FUNCTION_ID}/create-git-repo`,
+    createGitRepo
+  );
+  app.get('/ping',
+    healthPing
   );
 };

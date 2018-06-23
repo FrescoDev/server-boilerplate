@@ -3,14 +3,14 @@ const {
   Then,
 } = require('cucumber');
 
-When(/^a user posts a payload for "(.*)" - (.*)$/,
-  async function process(scenarioKey, description) {
+When(/^a user posts a payload for "(.*)" at uri "(.*)" - (.*)$/,
+  async function process(scenarioKey, uri, description) {
+    console.log(description); // eslint-disable-line
     const scenarioPayload = require(`../../resources/requests/${scenarioKey}`);
     this.state.response = await this.supertest(this.expressInstance)
-      .post(`/interaction-designer-api-demo/v1/${this.env.LAMBDA_FUNCTION_ID}`)
+      .post(`/${this.env.LAMBDA_FUNCTION_ID}/${uri}`)
       .set('X-Test-Spec', scenarioKey)
-      .send(scenarioPayload)
-      .set('Authorization', this.env.API_KEY);
+      .send(scenarioPayload);
   });
 
 Then(/^the response produced for "(.*)" is as expected$/, function (scenarioKey) {

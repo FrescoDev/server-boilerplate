@@ -3,11 +3,14 @@ const logger = require('./logger');
 const { str, num } = envalid;
 
 const env = envalid.cleanEnv(process.env, {
-  BASE_PATH: str({ default: '/interaction-designer-api-demo' }),
+  BASE_PATH: str({ default: '/' }),
   PORT: num({ default: 80 }),
-  LAMBDA_FUNCTION_ID: str({ default: 'calculate' }),
+  LAMBDA_FUNCTION_ID: str({ default: 'exec' }),
+  GITHUB_API_BASE_URI: str(),
+  GITHUB_API_AUTH_TOKEN: str(),
+  GITHUB_API_USER_AGENT: str(),
 });
 
-logger.log('Required environment variables are present');
+logger.info('Required environment variables are present');
 
 module.exports = env;

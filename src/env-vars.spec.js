@@ -18,6 +18,9 @@ test('that env vars are validated', (t) => {
     BASE_PATH: 'str',
     PORT: 'num',
     LAMBDA_FUNCTION_ID: 'str',
+    GITHUB_API_BASE_URI: 'str',
+    GITHUB_API_AUTH_TOKEN: 'str',
+    GITHUB_API_USER_AGENT: 'str',
   });
 
   t.end();

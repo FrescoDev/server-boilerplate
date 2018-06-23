@@ -23,22 +23,34 @@ services:
     depends_on:
       - stubs
     environment:
-      - BASE_PATH=/interaction-designer-api-demo
+      - BASE_PATH=/
       - PORT=80
-      - LAMBDA_FUNCTION_ID=calculate
+      - LAMBDA_FUNCTION_ID=exec
+      - GITHUB_API_BASE_URI=http://stubs/github-api
+      - GITHUB_API_AUTH_TOKEN=token
+      - GITHUB_API_USER_AGENT=FrescoDev
 
   dev:
     extends:
       service: yarn
+    depends_on:
+      - stubs
     ports:
       - "3000:80"
     command: run dev
     environment:
-      - BASE_PATH=/interaction-designer-api-demo
+      - BASE_PATH=/
       - PORT=80
-      - LAMBDA_FUNCTION_ID=calculate
+      - LAMBDA_FUNCTION_ID=exec
+      - GITHUB_API_BASE_URI=http://stubs/github-api
+      - GITHUB_API_AUTH_TOKEN=token
+      - GITHUB_API_USER_AGENT=FrescoDev
 
   stubs:
     extends:
       service: yarn
     command: run test:stubs -- 80
+    labels:
+      - "traefik.backend=stubs"
+      - "traefik.frontend.rule=PathPrefixStrip:/stubs"
+      - "traefik.port=80"
