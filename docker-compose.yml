@@ -1,0 +1,44 @@
+version: '2'
+services:
+  node:
+    image: mhart/alpine-node:8
+    volumes:
+      - .:/usr/src/app:z
+    working_dir: /usr/src/app
+
+  yarn:
+    extends:
+      service: node
+    entrypoint: yarn
+
+  unit-test:
+    extends:
+      service: yarn
+    command: run test:unit
+
+  component-test:
+    extends:
+      service: yarn
+    command: run test:component
+    depends_on:
+      - stubs
+    environment:
+      - BASE_PATH=/SERVICE_NAME
+      - PORT=80
+      - LAMBDA_FUNCTION_ID=calculate
+
+  dev:
+    extends:
+      service: yarn
+    ports:
+      - "3000:80"
+    command: run dev
+    environment:
+      - BASE_PATH=/SERVICE_NAME
+      - PORT=80
+      - LAMBDA_FUNCTION_ID=calculate
+
+  stubs:
+    extends:
+      service: yarn
+    command: run test:stubs -- 80
