@@ -1,6 +1,6 @@
-## SERVICE_NAME
+## interaction-designer-api-demo
 
-SERVICE_DESCRIPTION
+simplified api for interaction design
 
 ## INSTALLATION
 
@@ -19,11 +19,11 @@ SERVICE_DESCRIPTION
 - Run ```make dev``` to run the app. (see Makefile for details.) This will run the app within the docker container specified via the docker-compose.yml/Dockerfile.
 
 - Default port: 3000
-- URL: http://localhost:3000/SERVICE_NAME
+- URL: http://localhost:3000/interaction-designer-api-demo
 
 Default endpoints:
 
-- HEALTH: http://localhost:3000/SERVICE_NAME/health
+- HEALTH: http://localhost:3000/interaction-designer-api-demo/health
 
 Environment variables are set in the docker-compose.yml file for the dev container.
 
@@ -32,18 +32,18 @@ Environment variables are set in the docker-compose.yml file for the dev contain
 - Create a .env file locally (at root of the app directory) and specify the required environment variables.
 - E.g.
 ```
-BASE_PATH=/SERVICE_NAME
+BASE_PATH=/interaction-designer-api-demo
 PORT=3000
 LAMBDA_FUNCTION_ID=calculate
 ```
 - Run ```yarn run dev``` to run the app.
 
 - Default port: [set in .env file]
-- URL: http://localhost:3000/SERVICE_NAME
+- URL: http://localhost:3000/interaction-designer-api-demo
 
 Default endpoints:
 
-- HEALTH: http://localhost:PORT/SERVICE_NAME/health
+- HEALTH: http://localhost:PORT/interaction-designer-api-demo/health
 
 * Logging is provided via bunyan, optionally you can use the Bunyan CLI (requires global install) to provided formatted logging output. 
 

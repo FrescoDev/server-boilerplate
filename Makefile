@@ -39,3 +39,9 @@ dev:
 	${MAKEFILE_SUDO_COMMAND} ${DOCKER_COMPOSE} down -v || true
 	${MAKEFILE_SUDO_COMMAND} ${DOCKER_COMPOSE} up dev
 .PHONY: dev
+
+new:
+	git grep -l 'SERVICE_NAME' | xargs sed -i '' -e 's/SERVICE_NAME/$(NAME)/g'
+	git grep -l 'SERVICE_DESCRIPTION' | xargs sed -i '' -e 's/SERVICE_DESCRIPTION/$(DESC)/g'
+	Make all
+.PHONY: new

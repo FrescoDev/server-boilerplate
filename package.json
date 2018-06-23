@@ -1,11 +1,11 @@
 {
-  "name": "SERVICE_NAME",
+  "name": "interaction-designer-api-demo",
   "version": "0.0.1",
   "engines": {
     "node": ">=8.9.1"
   },
   "private": true,
-  "description": "SERVICE_DESCRIPTION",
+  "description": "simplified api for interaction design",
   "main": "main.js",
   "scripts": {
     "start": "node main.js",

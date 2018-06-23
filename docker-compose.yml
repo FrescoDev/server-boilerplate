@@ -23,7 +23,7 @@ services:
     depends_on:
       - stubs
     environment:
-      - BASE_PATH=/SERVICE_NAME
+      - BASE_PATH=/interaction-designer-api-demo
       - PORT=80
       - LAMBDA_FUNCTION_ID=calculate
 
@@ -34,7 +34,7 @@ services:
       - "3000:80"
     command: run dev
     environment:
-      - BASE_PATH=/SERVICE_NAME
+      - BASE_PATH=/interaction-designer-api-demo
       - PORT=80
       - LAMBDA_FUNCTION_ID=calculate
 

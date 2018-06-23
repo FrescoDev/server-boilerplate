@@ -3,7 +3,7 @@ const logger = require('./logger');
 const { str, num } = envalid;
 
 const env = envalid.cleanEnv(process.env, {
-  BASE_PATH: str({ default: '/SERVICE_NAME' }),
+  BASE_PATH: str({ default: '/interaction-designer-api-demo' }),
   PORT: num({ default: 80 }),
   LAMBDA_FUNCTION_ID: str({ default: 'calculate' }),
 });

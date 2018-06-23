@@ -7,13 +7,13 @@ const {
 When(/^engineering check the health endpoint$/,
   async function () {
     this.state.response = await this.supertest(this.expressInstance)
-      .get('/SERVICE_NAME/health');
+      .get('/interaction-designer-api-demo/health');
   });
 
 When(/^engineering check the ping endpoint$/,
   async function () {
     this.state.response = await this.supertest(this.expressInstance)
-      .get('/SERVICE_NAME/ping');
+      .get('/interaction-designer-api-demo/ping');
   });
 
 Then(/^the health response is valid$/, function () {
@@ -23,5 +23,5 @@ Then(/^the health response is valid$/, function () {
 });
 
 Then(/^the ping response is valid$/, function () {
-  this.expect(this.state.response.body.name).toEqual('SERVICE_NAME');
+  this.expect(this.state.response.body.name).toEqual('interaction-designer-api-demo');
 });

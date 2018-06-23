@@ -5,13 +5,13 @@ const {
 
 When(/^a user attempts to send a request without an api key$/, async function process() {
   this.state.response = await this.supertest(this.expressInstance)
-    .post(`/SERVICE_NAME/v1/${this.env.LAMBDA_FUNCTION_ID}`)
+    .post(`/interaction-designer-api-demo/v1/${this.env.LAMBDA_FUNCTION_ID}`)
     .send({});
 });
 
 When(/^a user attempts to send a request with the wrong api key$/, async function process() {
   this.state.response = await this.supertest(this.expressInstance)
-  .post(`/SERVICE_NAME/v1/${this.env.LAMBDA_FUNCTION_ID}`)
+  .post(`/interaction-designer-api-demo/v1/${this.env.LAMBDA_FUNCTION_ID}`)
     .send({})
     .set('Authorization', 'wrong');
 });

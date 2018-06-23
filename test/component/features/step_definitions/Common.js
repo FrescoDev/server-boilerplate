@@ -7,7 +7,7 @@ When(/^a user posts a payload for "(.*)" - (.*)$/,
   async function process(scenarioKey, description) {
     const scenarioPayload = require(`../../resources/requests/${scenarioKey}`);
     this.state.response = await this.supertest(this.expressInstance)
-      .post(`/SERVICE_NAME/v1/${this.env.LAMBDA_FUNCTION_ID}`)
+      .post(`/interaction-designer-api-demo/v1/${this.env.LAMBDA_FUNCTION_ID}`)
       .set('X-Test-Spec', scenarioKey)
       .send(scenarioPayload)
       .set('Authorization', this.env.API_KEY);
