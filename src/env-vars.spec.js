@@ -21,6 +21,7 @@ test('that env vars are validated', (t) => {
     GITHUB_API_BASE_URI: 'str',
     GITHUB_API_AUTH_TOKEN: 'str',
     GITHUB_API_USER_AGENT: 'str',
+    GITHUB_API_USER_EMAIL: 'str',
   });
 
   t.end();

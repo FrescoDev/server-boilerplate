@@ -32,12 +32,13 @@ release:
 .PHONY: release
 
 clean-up:
-	${MAKEFILE_SUDO_COMMAND} ${DOCKER_COMPOSE} down -v || true
+	${DOCKER_COMPOSE} down -v || true
+	rm -rf template/.git
 .PHONY: clean-up
 
 dev:
-	${MAKEFILE_SUDO_COMMAND} ${DOCKER_COMPOSE} down -v || true
-	${MAKEFILE_SUDO_COMMAND} ${DOCKER_COMPOSE} up dev
+	Make clean-up
+	${DOCKER_COMPOSE} up dev
 .PHONY: dev
 
 new:

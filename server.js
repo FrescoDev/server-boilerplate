@@ -12,7 +12,7 @@ const {
 
 const requestLogger = bunyanMiddleware({
   logger,
-  headerName: 'Pangiia-Request-Id',
+  headerName: 'niobi-sys-request',
   obscureHeaders: ['authorization'],
   level: (process.env.NODE_ENV === 'development') ? 'debug' : 'info',
 });
@@ -30,9 +30,10 @@ app.use(bodyParser.urlencoded({
   extended: false,
 }));
 app.use(bodyParser.json());
-const contextRoute = new express.Router();
-apiRoutes(contextRoute);
-app.use(BASE_PATH, contextRoute);
+
+const router = new express.Router();
+apiRoutes(router);
+app.use(BASE_PATH, router);
 
 app.shutdown = () => {
 };
