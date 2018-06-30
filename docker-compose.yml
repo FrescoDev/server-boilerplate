@@ -1,5 +1,9 @@
 version: '2'
 services:
+  ngrok:
+    image: fnichol/ngrok
+    entrypoint: ngrok
+
   node:
     image: timbru31/node-alpine-git
     volumes:
@@ -47,6 +51,15 @@ services:
       - GITHUB_API_AUTH_TOKEN=token
       - GITHUB_API_USER_AGENT=FrescoDev
       - GITHUB_API_USER_EMAIL=frescodevmgmt@gmail.com
+
+  publish-local:
+    image: fnichol/ngrok
+    links:
+      - dev:http
+    ports:
+      - "3009:4040"
+    environment:
+      - HTTP_PORT=3000
 
   stubs:
     extends:
