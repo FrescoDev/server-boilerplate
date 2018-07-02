@@ -40,6 +40,12 @@ dev:
 	${MAKEFILE_SUDO_COMMAND} ${DOCKER_COMPOSE} up dev
 .PHONY: dev
 
+publish-tunnel:
+	Make clean-up
+	${DOCKER_COMPOSE} up -d publish-tunnel
+	open http://localhost:3009
+.PHONY: publish-tunnel
+
 new:
 	git grep -l 'SERVICE_NAME' | xargs sed -i '' -e 's/SERVICE_NAME/$(NAME)/g'
 	git grep -l 'SERVICE_DESCRIPTION' | xargs sed -i '' -e 's/SERVICE_DESCRIPTION/$(DESC)/g'

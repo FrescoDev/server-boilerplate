@@ -37,6 +37,18 @@ services:
       - BASE_PATH=/SERVICE_NAME
       - PORT=80
       - LAMBDA_FUNCTION_ID=calculate
+    labels:
+      - "traefik.backend=dev"
+      - "traefik.frontend.rule=PathPrefixStrip:/dev"
+      - "traefik.port=80"
+
+  publish-tunnel:
+    image: wernight/ngrok
+    depends_on:
+      - dev
+    ports:
+      - "3009:4040"
+    command: ngrok http dev:80
 
   stubs:
     extends:
